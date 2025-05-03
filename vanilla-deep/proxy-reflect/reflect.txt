@@ -1,0 +1,16 @@
+🛠️ Reflect 단독 학습용 구현 아이디어
+객체 복사 도우미 함수 만들기
+
+Reflect API (ownKeys, get, set)만 이용해 얕은 복사 구현
+
+속성 접근/수정 안전 실행기
+
+try-catch 대신 Reflect 메서드를 사용해 예외 없이 속성 접근, 수정, 삭제
+
+동적으로 객체 구성하기
+
+Reflect.defineProperty를 이용해서 속성을 하나씩 추가하는 빌더 구현
+
+함수 호출 로깅 도구
+
+Reflect.apply를 써서 함수 호출을 감싸고, 호출 정보 로그 찍기
