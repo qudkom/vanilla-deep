@@ -1,0 +1,15 @@
+symbol 내장타입 - iterator, asyncIterator, hasInstance
+
+Symbol.iterator
+-> symbol/iterator, symbol/iterator2
+
+Symbol.asyncIterator
+-> symbol/asyncIterator, symbol/asyncIterator2, symbol/asyncIterator3
+
+Symbol.hasInstance
+-> symbol/hasInstance, symbol/hasInstance2
+
+
+
+Symbol 유니크, 비밀키
+-> pattern/builder, pattern/builder2

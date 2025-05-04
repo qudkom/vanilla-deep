@@ -2,18 +2,18 @@ function Person(name1) {
   this.name1 = name1
 }
 Person.prototype.sayHi = function () {
-  console.log(`Hi, I'm ${this.name1}`)
+  console.log(`[instance] Hi, I'm ${this.name1}`)
   console.log(this)
 }
 Person.sayHi = function () {
-  console.log(`Hi, I'm ${this.name1}`)
+  console.log(`[static] Hi, I'm ${this.name1}`)
   console.log(this)
 }
 
 function Person2(name1) {
   this.name1 = name1
   this.sayHi = function () {
-    console.log(`Hi, I'm ${this.name1}`)
+    console.log(`[in object] Hi, I'm ${this.name1}`)
     console.log(this)
   }
 }
@@ -33,3 +33,13 @@ new Person('이동근1').sayHi === new Person('이동근2').sayHi
 // true
 new Person2('이동근1').sayHi === new Person2('이동근2').sayHi
 // false
+
+const person = new Person('이동근1')
+console.log(person)
+person.sayHi()
+
+const person1 = new Person2('이동근2')
+console.log(person1)
+person1.sayHi()
+
+Person.sayHi()

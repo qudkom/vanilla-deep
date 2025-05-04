@@ -1,0 +1,13 @@
+속성 접근 감지
+proxy-reflect/proxy-reflect, proxy-reflect/proxy-reflect3
+
+속성 설정 감지 및 수정
+proxy-reflect/proxy-reflect, proxy-reflect/proxy-reflect3
+
+속성 삭제 감지
+proxy-reflect/proxy-reflect, proxy-reflect/proxy-reflect3
+
+메서드 호출 로그와 예외 처리
+proxy-reflect/proxy-reflect2, proxy-reflect/proxy-reflect3
+
+속성 접근 및 설정 검증

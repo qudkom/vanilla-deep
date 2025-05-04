@@ -1,0 +1,8 @@
+Proxy 기본
+-> proxy/proxy
+
+Proxy 객체로 delete 방어, 비밀키 은닉
+-> proxy/proxy3
+
+타입, 인스턴스(Typed object) 에 Proxy 설정. - 생성자 or 개별 인스턴스
+-> proxy/proxy4
