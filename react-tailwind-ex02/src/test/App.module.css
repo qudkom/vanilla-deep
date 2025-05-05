@@ -1,9 +1,0 @@
-@import 'tailwindcss';
-
-.test {
-  @apply bg-amber-400;
-
-  .inner {
-    @apply bg-blue-700;
-  }
-}

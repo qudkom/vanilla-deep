@@ -1,8 +1,0 @@
-@import 'tailwindcss';
-
-.dropdown {
-}
-.dropdownList {
-  @apply flex
-  /*  */;
-}
