@@ -10,4 +10,7 @@ proxy-reflect/proxy-reflect, proxy-reflect/proxy-reflect3
 메서드 호출 로그와 예외 처리
 proxy-reflect/proxy-reflect2, proxy-reflect/proxy-reflect3
 
+프록시 중첩하여 입력값/반환값 검증, 공통 예외처리
+proxy-reflect/proxy-reflect4
+
 속성 접근 및 설정 검증
