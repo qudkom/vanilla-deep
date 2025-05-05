@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+.btn {
+  @apply m-1 rounded-md text-white text-sm px-2 py-1
+  active:scale-95
+  disabled:opacity-60
+  disabled:scale-100 disabled:cursor-not-allowed
+  /*  */;
+}
+
+.blue {
+  @apply bg-blue-600 
+  hover:shadow-md hover:bg-blue-700
+  active:shadow-md active:bg-blue-700
+  focus:bg-blue-700
+  /*  */;
+}
+.red {
+  @apply bg-red-600 
+  hover:shadow-md hover:bg-red-700
+  active:shadow-md active:bg-red-700
+  focus:bg-red-700
+  /*  */;
+}
+.yellow {
+  @apply bg-yellow-600 
+  hover:shadow-md hover:bg-yellow-700
+  active:shadow-md active:bg-yellow-700
+  focus:bg-yellow-700
+  /*  */;
+}

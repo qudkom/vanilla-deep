@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+.item {
+  /* @apply bg-red-200; */
+  @apply px-2 py-1
+  transition
+  duration-500
+  ease-in-out
+  hover:cursor-pointer 
+  hover:text-blue-500
+  focus:text-blue-500
+  hover:drop-shadow-lg
+  /*  */;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}

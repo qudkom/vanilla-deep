@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+.cardBoard {
+  @apply px-4 py-4 max-md:px-3 max-sm:px-2 space-y-4 max-md:space-y-3 max-sm:space-y-2;
+}

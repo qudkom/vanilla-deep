@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+.nav {
+  @apply bg-gray-100
+  shadow-lg
+  /*  */;
+  ul {
+    @apply flex space-x-2
+    /*  */;
+  }
+}

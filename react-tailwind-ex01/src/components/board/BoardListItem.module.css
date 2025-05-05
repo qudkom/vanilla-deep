@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+.row {
+  /* @apply w-100; */
+  /* @apply hover:bg-gray-50 transition hover:cursor-pointer */
+  /*  */
+  td {
+    @apply text-center
+    /*  */;
+    &.category {
+      @apply whitespace-nowrap
+      /*  */;
+    }
+    &.title {
+      @apply text-left overflow-ellipsis line-clamp-1 break-all leading-loose
+      /*  */;
+      /* width: 50%; */
+      /* line-height: 2; */
+    }
+    &.content {
+    }
+    &.author {
+      @apply whitespace-nowrap
+      /*  */;
+    }
+    &.datetime {
+      @apply whitespace-nowrap
+      /*  */;
+    }
+    &.hit {
+      @apply whitespace-nowrap
+      /*  */;
+    }
+  }
+}
