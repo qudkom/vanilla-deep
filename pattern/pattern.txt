@@ -1,18 +1,113 @@
-디자인패턴
+✅ ★★★★★ (최상위 중요도)
+1. Factory 패턴
+조건이나 파라미터에 따라 객체 생성 로직을 추상화
 
-Builder 패턴
+의존성 주입이나 모듈 초기화 단계에서 자주 등장
 
-Factory 패턴 (레거시에서도 자주 등장, 여전히 사용)
-조건에 따라 객체를 생성하는 방식
+JS에서 객체 생성을 캡슐화할 때 유용
 
-Strategy 패턴 (레거시 + 트렌드 모두 해당)
-조건에 따라 행동을 바꾸는 함수/객체 조합
+2. Strategy 패턴
+행위를 동적으로 교체 가능한 구조로 추상화
 
-Observer 패턴 (트렌드: 이벤트 기반 프로그래밍에 사용)
-EventEmitter, pub/sub, RxJS 같은 흐름의 이해에 필수
+if/switch 대신 객체 기반 로직 분기 구현에 적합
 
-Decorator 패턴 (트렌드: TS 데코레이터, React HOC, 미들웨어 등과 연관)
-함수/객체에 기능을 덧붙이는 방식. 프록시와도 궁합 좋음
+Form validation, 비즈니스 룰 전환 등 다양하게 활용
 
-Proxy + Command 패턴 (트렌드)
-요청을 캡슐화해 나중에 실행할 수 있는 구조 만들기
+3. Observer 패턴
+이벤트 중심 시스템에서 핵심 (ex. EventEmitter, DOM 이벤트, RxJS)
+
+pub/sub 구조를 추상화하며 decoupling 제공
+
+4. Decorator 패턴
+기능을 동적으로 덧붙이거나 감싸는 방식
+
+미들웨어, React HOC, TS 데코레이터 등으로 자연스럽게 쓰임
+
+프록시와도 유사한 맥락을 가짐
+
+✅ ★★★★ (높은 중요도)
+5. Proxy 패턴
+JS의 Proxy 객체로 구현 가능 (핵심 기능 중 하나)
+
+속성 감시, 동작 가로채기, 유효성 검사, 로깅 등
+
+데코레이터나 커맨드 패턴과 조합해서 많이 사용됨
+
+6. Command 패턴
+명령을 객체로 캡슐화 → 나중에 실행, 큐잉, 취소 가능
+
+이벤트 큐, 명령 로그, undo/redo 기능 등에 적합
+
+프록시와 함께 계층을 나누거나 디스패치할 때 유용
+
+7. Chain of Responsibility 패턴
+처리 단계를 체인처럼 연결 → 각자가 처리하거나 패스
+
+Express, Koa, Redux middleware 구조와 완전히 동일
+
+로직 분기 없이 유연하게 미들웨어 체인 구성 가능
+
+8. Pipeline 패턴
+처리 단계를 순차적으로 적용하는 함수 체인 구조
+
+데이터 흐름을 명확히, 재사용성 높게 구성할 수 있음
+
+pipe, compose, RxJS, 미들웨어 등 다양한 응용 가능
+
+✅ ★★★ (중간 중요도)
+9. Singleton 패턴
+단 하나의 인스턴스 보장
+
+Config, Logger, Database 등 전역 의존 리소스에 적합
+
+JS 모듈 시스템 자체가 사실상 singleton처럼 작동
+
+10. Builder 패턴
+복잡한 객체 생성 로직을 단계적으로 구성
+
+JS에서는 chaining API (예: jQuery, Fluent API 등) 형태로 종종 구현
+
+11. Adapter 패턴
+기존 인터페이스를 원하는 형태로 변환
+
+레거시 코드 → 신 코드 통합할 때 자주 사용
+
+✅ ★★ (보조적 중요도)
+12. State 패턴
+상태에 따라 객체의 행위를 다르게 구현
+
+유한 상태 기계(finite state machine) 구현 시 유용
+
+13. Mediator 패턴
+객체 간 복잡한 상호작용을 중재자 하나로 집중
+
+많은 컴포넌트가 존재할 때 의존 관계를 줄일 수 있음
+
+14. Module 패턴
+클로저와 IIFE로 캡슐화 및 공개 API 구성
+
+모듈 시스템 도입 이전에 많이 쓰였고 지금도 클로저 기반 모듈화에서 유효
+
+✅ ★ (기타 or 특정 케이스)
+15. Prototype 패턴
+JS 자체가 프로토타입 기반 언어
+
+명시적으로 적용하기보단 JS 동작 이해 차원에서 중요
+
+16. Flyweight 패턴
+동일한 객체를 공유해 메모리 절약
+
+매우 많은 수의 유사 객체가 필요할 때만 등장
+
+17. Visitor, Memento, Interpreter, Bridge 등
+복잡한 도메인 모델이나 특정 상황에서만 등장
+
+프론트엔드보단 백엔드나 DSL 해석기 쪽에 더 적합
+
+📌 요약
+중요도	패턴들
+★★★★★	Factory, Strategy, Observer, Decorator
+★★★★	Proxy, Command, Chain of Responsibility, Pipeline
+★★★	Singleton, Builder, Adapter
+★★	State, Mediator, Module
+★	Prototype, Flyweight, Visitor 등 특수 케이스
