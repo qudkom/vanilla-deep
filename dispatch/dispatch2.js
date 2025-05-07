@@ -46,6 +46,8 @@ const wrapResponse = (resopnse) => {
   }
 }
 
+const parseRequest = () => {}
+
 const parseGetRequest = (request) => {
   const { requestURL } = request
   const [requestURI, params] = requestURL.split('?')
