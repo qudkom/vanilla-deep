@@ -16,7 +16,7 @@ const setMatchingUri = (request, context) => {
     return uriParts.every((part, index) => (part.startsWith(':') ? true : part === requestUriParts[index]))
   })
   if (!matchingUri) {
-    throw new NotFound()
+    throw new NotFound('존재하지 않는 api 요청')
   }
   context.matchingUri = matchingUri
 }
@@ -38,11 +38,15 @@ const parsePathVariables = (request, context) => {
 }
 
 const invokeHandler = (request, context) => {
+  console.log('==================================')
+  console.log('[invoke] request: ', context)
+  console.log('[invoke] context: ', context)
+  console.log('==================================')
   const { method, parameterMap, requestBody } = request
   const { matchingUri, pathVariableMap } = context
   const handler = requestMapping[matchingUri][method]
   if (!handler) {
-    throw new MethodNotAllowed()
+    throw new MethodNotAllowed(`${matchingUri}에는 ${method} 지원되지 않음`)
   }
   return handler(parameterMap || requestBody || {}, pathVariableMap || {})
 }
@@ -83,9 +87,12 @@ const processRequest = (input) => {
   })()
   return JSON.stringify(result)
 }
-
-console.log('request: ', INPUT)
+console.log('==================================')
+console.log('[main] request: ', INPUT)
+console.log('==================================')
 
 const response = processRequest(INPUT)
 
-console.log('response: ', response)
+console.log('==================================')
+console.log('[main] response: ', response)
+console.log('==================================')

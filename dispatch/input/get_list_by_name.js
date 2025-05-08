@@ -1,7 +1,7 @@
-const { CONTENT, ACCEPT } = require('./enums')
+const { CONTENT, ACCEPT } = require('./../types/enums')
+const { buildQueryStr } = require('./../util/utils')
 module.exports = JSON.stringify({
-  requestURL: '/list?name=1&name=2',
+  requestURL: '/items' + buildQueryStr({ name: [1, 2] }),
   method: 'get',
-  contentType: CONTENT.JSON,
   accept: ACCEPT.JSON,
 })
