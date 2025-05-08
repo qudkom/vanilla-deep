@@ -1,5 +1,5 @@
 const { BadRequest, MethodNotAllowed, NotFound } = require('./../types/exception')
-const { requestMapping } = require('./../controller')
+const { requestMapping } = require('./controller')
 
 const routeResolver = (request, context) => {
   const { requestURI } = request
@@ -51,7 +51,20 @@ const resolveHandler = (request, context) => {
   pathVariablesResolver(request, context)
 }
 
+const dispatchHandlers = (handlers, request) => {
+  let index = 0
+  let handler = null
+  let result = null
+  const context = {}
+  while (index < handlers.length) {
+    handler = handlers[index++]
+    result = handler(request, context)
+  }
+  return result
+}
+
 module.exports = {
   invokeHandler,
   resolveHandler,
+  dispatchHandlers,
 }

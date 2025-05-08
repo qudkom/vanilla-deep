@@ -1,6 +1,6 @@
-const { HTTP } = require('./types/enums')
-const { item: allItems } = require('./sample/data')
-const { NotFound } = require('./types/exception')
+const { HTTP } = require('../types/enums')
+const { item: allItems } = require('../sample/data')
+const { NotFound } = require('../types/exception')
 
 const searchItem = (params, pathVarMap) => {
   const itemId = Number(pathVarMap.id)
