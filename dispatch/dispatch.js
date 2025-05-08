@@ -1,11 +1,91 @@
-const args = process.argv.slice(2)
+// 요청 데이터 예시
+const INPUT = require('./input/get_item')
+const { BadRequest, MethodNotAllowed, NotFound } = require('./types/exception')
+const { parseHttpRequest } = require('./util/request')
+const { requestMapping } = require('./controller')
 
-const add = (a, b) => a + b
-const subtract = (a, b) => a - b
-const multiply = (a, b) => a * b
-const divide = (a, b) => a / b
-const modulo = (a, b) => a % b
+// request parse 이후에 사용할 것들
 
-const calcMap = {
-  calcHandler,
+const setMatchingUri = (request, context) => {
+  const { requestURI } = request
+  const allUriList = Object.keys(requestMapping)
+  const matchingUri = allUriList.find((uri) => {
+    const uriParts = uri.split('/')
+    const requestUriParts = requestURI.split('/')
+    if (uriParts.length !== requestUriParts.length) return false
+    return uriParts.every((part, index) => (part.startsWith(':') ? true : part === requestUriParts[index]))
+  })
+  if (!matchingUri) {
+    throw new NotFound()
+  }
+  context.matchingUri = matchingUri
 }
+const parsePathVariables = (request, context) => {
+  const { requestURI } = request
+  const { matchingUri } = context
+  if (!matchingUri.includes(':')) return
+  const pathVariableMap = {}
+  const matchingUriParts = matchingUri.split('/')
+  const requestUriParts = requestURI.split('/')
+
+  for (const [i, matchingPart] of matchingUriParts.entries()) {
+    if (!matchingPart.startsWith(':')) continue
+    const requestPart = requestUriParts[i]
+    const pathVariable = matchingPart.slice(1)
+    pathVariableMap[pathVariable] = requestPart
+  }
+  context.pathVariableMap = pathVariableMap
+}
+
+const invokeHandler = (request, context) => {
+  const { method, parameterMap, requestBody } = request
+  const { matchingUri, pathVariableMap } = context
+  const handler = requestMapping[matchingUri][method]
+  if (!handler) {
+    throw new MethodNotAllowed()
+  }
+  return handler(parameterMap || requestBody || {}, pathVariableMap || {})
+}
+
+const handlerChain = [setMatchingUri, parsePathVariables, invokeHandler]
+
+const dispatchHandler = (handlers, request) => {
+  let index = 0
+  let handler = null
+  let result = null
+  const context = {}
+  while (index < handlers.length) {
+    handler = handlers[index++]
+    result = handler(request, context)
+  }
+  return result
+}
+
+const processRequest = (input) => {
+  const request = JSON.parse(input)
+  const result = (() => {
+    try {
+      parseHttpRequest(request)
+      const result = dispatchHandler(handlerChain, request)
+      return {
+        status: 200,
+        message: 'success',
+        body: JSON.stringify(result),
+      }
+    } catch (err) {
+      console.log(err.stack)
+      return {
+        status: err.status,
+        message: err.message,
+        body: JSON.stringify(err.stack),
+      }
+    }
+  })()
+  return JSON.stringify(result)
+}
+
+console.log('request: ', INPUT)
+
+const response = processRequest(INPUT)
+
+console.log('response: ', response)
