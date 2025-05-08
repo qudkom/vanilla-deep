@@ -1,5 +1,5 @@
 const { ACCEPT, CONTENT } = require('./../types/enums')
-const { encodedFormBody } = require('./../util/utils')
+const { encodedFormBody } = require('./../modules/utils')
 module.exports = JSON.stringify({
   requestURL: '/item/1',
   method: 'put',
